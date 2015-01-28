@@ -1,0 +1,5 @@
+.idea
+debian/debhelper.log
+debian/tmp
+debian/files
+debian/substvars
