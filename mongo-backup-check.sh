@@ -1,6 +1,7 @@
 #!/bin/bash
 # Config file name may be passed as first parameter
 
+IFS=$' \t\n'
 [ -n "$1" ] && source "$1" || source /etc/mongodb-backup-simple/config.sh
 
 if [ ! -f "$status" ]; then
