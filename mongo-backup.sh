@@ -40,9 +40,11 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Waiting for rsync to finish..."
+set +x
 while [ -d /proc/$rsync_pid ]; do
 	sleep 5
 done
+set -x
 sleep 1
 
 if [ "$(cat $rsync_status)" != '0' ]; then
