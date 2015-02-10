@@ -6,14 +6,16 @@ for i in /etc/init/mongodb.rs*; do
 done
 
 # no trailing slashes here:
-data=/opt/mongodb.rs*
+data=/opt/mongodb-moddb.rs*
 
-mongodump_opts="--ipv6 --host mongo-configsvr.example.com --port 27019 --username root --password root --authenticationDatabase admin"
+mongodump_opts="--ipv6 --port 27019 --username root -proot --authenticationDatabase admin"
+configsvr_hosts="mongocfg0.example.com mongocfg1.example.com mongocfg2.example.com"
 
-backup_dir=/opt/backup/mongo/
+backup_dir=/local/backup/rsnap/mongo/moddb/tmp
 
-status=/var/log/mongodb-backup-simple/LAST_BACKUP_STATUS
-rsync_status=/var/log/mongodb-backup-simple/RSYNC_DONE
+status=/var/log/mongo-backup/LAST_BACKUP_STATUS
+backup_ok="$backup_dir/.rsnap_prot0"
+rsync_status=/var/log/mongo-backup/RSYNC_DONE
 
 rotate=0
 rotate_depth=7
