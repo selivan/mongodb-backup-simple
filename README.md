@@ -21,7 +21,3 @@ Monitoring
 ----------
 * Last backup status
 * Last backup age (expiration time set in config)
-
-TODO
-----
-* Try to connect to several config servers, until success.
