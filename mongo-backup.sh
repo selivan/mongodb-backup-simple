@@ -35,7 +35,7 @@ mongodump_ok=0
 
 for configsvr in $configsvr_hosts; do
     mongodump --oplog --host $configsvr $mongodump_opts --out "$dest/configsvr"
-    if [ $? -ne 0 ]; then
+    if [ $? -eq 0 ]; then
         mongodump_ok=1
         break
     fi
