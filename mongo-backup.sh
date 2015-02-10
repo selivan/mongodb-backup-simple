@@ -25,6 +25,8 @@ else
     dest="$backup_dir"
 fi
 
+mkdir -p "$dest"
+
 # Run rsync in background
 [ -f $rsync_status ] && rm $rsync_status
 (rsync -a $data "$dest" ; echo $? > $rsync_status) &
