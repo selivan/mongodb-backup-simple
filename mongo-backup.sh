@@ -1,8 +1,7 @@
 #!/bin/bash
 # Config file name may be passed as first parameter
 
-IFS=$' \t\n'
-[ -n "$1" ] && source "$1" || source /etc/mongodb-backup-simple/config.sh
+[ -n "$1" ] && source "$1" || source /etc/mongo-backup-simple/config.sh
 
 function die() {
     echo $*
@@ -32,8 +31,17 @@ mkdir -p "$dest"
 (rsync -a $data "$dest" ; echo $? > $rsync_status) &
 rsync_pid=$!
 
-mongodump --oplog $mongodump_opts --out "$dest/configsvr"
-if [ $? -ne 0 ]; then
+mongodump_ok=0
+
+for configsvr in $configsvr_hosts; do
+    mongodump --oplog --host $configsvr $mongodump_opts --out "$backup_dir/tmp/configsvr"
+    if [ $? -ne 0 ]; then
+        mongodump_ok=1
+        break
+    fi
+done
+
+if [ $mongodump_ok -eq 0 ]; then
     kill -SIGTERM $rsync_pid
     for s in $services; do
         service $s start
@@ -72,4 +80,5 @@ if [ "$rotate" == '1' ]; then
     rm --preserve-root -fr "$backup_dir/$((rotate_depth+1))"
 fi
 
+touch $backup_ok
 echo "0; OK" > $status
