@@ -8,7 +8,7 @@ Config
 ------
 * services to stop (mongod instances)
 * catalogs to backup
-* hosts running database
+* hosts running config database
 * mongodump options to backup config database
 * status file for monitoring
 * status file for rsync
