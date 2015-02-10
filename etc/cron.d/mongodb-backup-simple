@@ -1,1 +1,2 @@
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 0 23 * * * root flock -xn /run/mongo-backup.lock -c /usr/bin/mongo-backup.sh >> /var/log/mongo-backup/log.$(date +\%Y-\%m-\%d_\%H-\%M-\%S)
