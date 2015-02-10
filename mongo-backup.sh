@@ -28,7 +28,7 @@ mkdir -p "$dest"
 
 # Run rsync in background
 [ -f $rsync_status ] && rm $rsync_status
-(rsync -a $data "$dest" ; echo $? > $rsync_status) &
+(rsync -av $data "$dest" ; echo $? > $rsync_status) &
 rsync_pid=$!
 
 mongodump_ok=0
