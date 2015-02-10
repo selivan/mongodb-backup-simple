@@ -32,7 +32,7 @@ mkdir -p "$dest"
 (rsync -a $data "$dest" ; echo $? > $rsync_status) &
 rsync_pid=$!
 
-mongodump --oplog $mongodump_opts --out "$backup_dir/tmp/configsvr"
+mongodump --oplog $mongodump_opts --out "$dest/configsvr"
 if [ $? -ne 0 ]; then
     kill -SIGTERM $rsync_pid
     for s in $services; do
