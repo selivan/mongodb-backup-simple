@@ -36,6 +36,7 @@ if [ $? -ne 0 ]; then
     for s in $services; do
         service $s start
     done
+    kill -15 $rsync_pid
     die "mongodump failed"
 fi
 
