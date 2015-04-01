@@ -1,0 +1,13 @@
+---
+backup_dir: /backup/mongo/tmp/
+backup_ok: /backup/mongo/tmp/backup_ok
+servers:
+  rs0: {dir: /opt/mongodb.rs0, host: 127.0.0.1, port: 27017, password: '', user: root, db: 'admin'}
+  rs1: {dir: /opt/mongodb.rs1, host: 127.0.0.1, port: 27018, password: '', user: root, db: 'admin'}
+  rs2: {dir: /opt/mongodb.rs2, host: 127.0.0.1, port: 27019, password: '', user: root, db: 'admin'}
+config_servers:
+  cfg1: {host: 127.0.0.1, port: 27019, db: 'admin', password: '', user: root}
+  cfg2: {host: 127.0.0.1, port: 27020, db: 'admin', password: '', user: root}
+  cfg3: {host: 127.0.0.1, port: 27021, db: 'admin', password: '', user: root}
+rsync_options: ['-a', '-v', '--whole-file']
+mongodump_options: ['--ipv6', '--oplog']
