@@ -27,3 +27,4 @@ Links
 * https://groups.google.com/forum/#!msg/mongodb-user/ukG2D459J_w/62NiSO3dyBkJ
 * http://pyyaml.org/wiki/PyYAMLDocumentation
 
+**P.S.** If this code is useful for you - don't forget to put a star on it's [github repo](https://github.com/selivan/mongodb-backup-simple).
